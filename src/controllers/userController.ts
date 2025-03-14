@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
+import { CreateUserRequest } from '../interfaces/user.interface';
 
 export const getUsers = (req: Request, res: Response, next: NextFunction) => {
   res.status(200).json({
@@ -12,4 +13,13 @@ export const getUser = (req: Request, res: Response, next: NextFunction) => {
     status: 'success',
     data: 'One User',
   });
+};
+
+export const createUser = (
+  req: Request<{}, {}, CreateUserRequest>,
+  res: Response,
+  next: NextFunction
+) => {
+  const email: string = req.body.email;
+  const password: string = req.body.password;
 };
