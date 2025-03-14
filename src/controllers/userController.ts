@@ -1,5 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
-import { CreateUserRequest } from '../interfaces/user.interface';
+import {
+  CreateUserQueryParams,
+  CreateUserRequest,
+} from '../interfaces/user.interface';
 
 export const getUsers = (req: Request, res: Response, next: NextFunction) => {
   res.status(200).json({
@@ -16,10 +19,11 @@ export const getUser = (req: Request, res: Response, next: NextFunction) => {
 };
 
 export const createUser = (
-  req: Request<{}, {}, CreateUserRequest>,
+  req: Request<{}, {}, CreateUserRequest, CreateUserQueryParams>,
   res: Response,
   next: NextFunction
 ) => {
   const email: string = req.body.email;
   const password: string = req.body.password;
+  const isLoggedIn: boolean = req.query.loginAfterCreate;
 };
