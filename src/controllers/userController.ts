@@ -6,6 +6,8 @@ import {
 } from '../interfaces/user.interface';
 
 export const getUsers = (req: Request, res: Response, next: NextFunction) => {
+  const customField = req.customField;
+
   res.status(200).json({
     status: 'success',
     data: 'Some Users',
